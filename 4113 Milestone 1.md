@@ -61,17 +61,21 @@ The aim and purpose of the program is to create a **console-based Java applicati
 
 ### Input Process Output Table
 
+
+
 ------------------------------------------------------------------------------------------------------------------------------
 
-![](D:\Wisam%20Haider\Pictures\Screenshots\IPO%20table.png)
+![](C:\Users\Wisam%20Haider\OneDrive\Desktop\IPO%20table.png)
 
 ------------------------------------------------------------------------------------------------------------------------------
 
 ### Gantt Chart
 
+![](C:\Users\Wisam%20Haider\OneDrive\Desktop\Gantt.png)
+
 ------------------------------------------------------------------------------------------------------------------------------
 
-![](C:\Users\Wisam%20Haider\AppData\Roaming\marktext\images\2026-05-03-16-16-27-image.png)
+
 
 ------------------------------------------------------------------------------------------------------------------------------
 
@@ -91,7 +95,7 @@ I ensured I would every few lines flip back to the example sheet to keep a simil
 
 Today I started off by referring back to the example document, i noticed the IPO table was made in one table but a row for each function that had an input or output, I made the assumption that any task that only performs a process that does not directly require an input or an output will not be included in the table.
 
-After that I read the assessment sheet and found out where to get my information from, I scanned the functional requirements breackdown section and found lots of functions scattered throughout, so I meticulously start writing each function down first line by line, then i started filling in the entire input column and then the output column and finally finished with the process column.
+After that I read the assessment sheet and found out where to get my information from, I scanned the functional requirements breakdown section and found lots of functions scattered throughout, so I meticulously start writing each function down first line by line, then i started filling in the entire input column and then the output column and finally finished with the process column.
 
 I struggled a bit with the process column as I wasn't sure how much to include but after  going back and forth with the example sheet I found a good balance and finished.
 
