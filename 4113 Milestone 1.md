@@ -61,8 +61,6 @@ The aim and purpose of the program is to create a **console-based Java applicati
 
 ### Input Process Output Table
 
-
-
 ------------------------------------------------------------------------------------------------------------------------------
 
 ![](C:\Users\Wisam%20Haider\OneDrive\Desktop\IPO%20table.png)
@@ -74,8 +72,6 @@ The aim and purpose of the program is to create a **console-based Java applicati
 ![](C:\Users\Wisam%20Haider\OneDrive\Desktop\Gantt.png)
 
 ------------------------------------------------------------------------------------------------------------------------------
-
-
 
 ------------------------------------------------------------------------------------------------------------------------------
 
