@@ -81,7 +81,7 @@ The aim and purpose of the program is to create a **console-based Java applicati
 
 #### Diary Entry 1 - 27/04/2026
 
-Today I thoroughly read the assessment task information sheet trying to completely understand what I was required to submit in milestone 1, I began by reading section by section but after every section i would look back to the example submission that was given to us by out tutor and tried to find where he got each bit of information from.
+Today I thoroughly read the assessment task information sheet trying to completely understand what I was required to submit in milestone 1, I began by reading section by section but after every section I would look back to the example submission that was given to us by out tutor and tried to find where he got each bit of information from.
 
 Even though it wasn't the same task I was quickly able to figure out how to get my information and created a flexible timeline in my head for me to work through it. I began that same day on the first part about the purpose of the program.
 
@@ -89,9 +89,9 @@ I ensured I would every few lines flip back to the example sheet to keep a simil
 
 #### Diary Entry 2 - 29/04/2026
 
-Today I started off by referring back to the example document, i noticed the IPO table was made in one table but a row for each function that had an input or output, I made the assumption that any task that only performs a process that does not directly require an input or an output will not be included in the table.
+Today I started off by referring back to the example document, I noticed the IPO table was made in one table but a row for each function that had an input or output, I made the assumption that any task that only performs a process that does not directly require an input or an output will not be included in the table.
 
-After that I read the assessment sheet and found out where to get my information from, I scanned the functional requirements breakdown section and found lots of functions scattered throughout, so I meticulously start writing each function down first line by line, then i started filling in the entire input column and then the output column and finally finished with the process column.
+After that I read the assessment sheet and found out where to get my information from, I scanned the functional requirements breakdown section and found lots of functions scattered throughout, so I meticulously start writing each function down first line by line, then I started filling in the entire input column and then the output column and finally finished with the process column.
 
 I struggled a bit with the process column as I wasn't sure how much to include but after  going back and forth with the example sheet I found a good balance and finished.
 
@@ -103,7 +103,7 @@ I figured I had to tackle this one on my own so I went back to the diary entries
 
 So this took an extra day as I had to read and watch videos about how to actually properly format it, but after I managed that the rest was easy as I just had to fill in dates. 
 
-In hindsight for next time it would be beneficial if i started earlier as I cut it quite close this time around.
+In hindsight for next time it would be beneficial if I started earlier as I cut it quite close this time around.
 
 Template used for the Gantt chart - [Simple Gantt Chart by Vertex42](https://www.vertex42.com/ExcelTemplates/simple-gantt-chart.html?utm_source=ms&utm_medium=file&utm_campaign=office&utm_content=text)
 
