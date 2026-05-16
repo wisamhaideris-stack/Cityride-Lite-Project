@@ -63,15 +63,15 @@ The aim and purpose of the program is to create a **console-based Java applicati
 
 ------------------------------------------------------------------------------------------------------------------------------
 
-![](C:\Users\Wisam%20Haider\OneDrive\Desktop\IPO%20table.png)
+![](C:\Users\Wisam%20Haider\IdeaProjects\T0495305_Wisam_IYO4113\IPO.png)
 
 ------------------------------------------------------------------------------------------------------------------------------
 
 ### Gantt Chart
 
-![](C:\Users\Wisam%20Haider\OneDrive\Desktop\Gantt.png)
-
 ------------------------------------------------------------------------------------------------------------------------------
+
+![](C:\Users\Wisam%20Haider\IdeaProjects\T0495305_Wisam_IYO4113\Gannt%201.png)
 
 ------------------------------------------------------------------------------------------------------------------------------
 
@@ -99,7 +99,7 @@ I struggled a bit with the process column as I wasn't sure how much to include b
 
 Today I planned was the last day I would need to work on this milestone, as usual I started off by reading the assessment sheet and example submission, the assessment didn't really help me as it was a timeline of my out progress and the example submission wasn't the best either.
 
-I figured I had to tackle this one on my own so I went back to the diary entries to get the dates, then I had to make the gantt chart, this part was pretty hard as I couldn't wrap my head around the formatting.
+I figured I had to tackle this one on my own, so I went back to the diary entries to get the dates, then I had to make the gantt chart, this part was pretty hard as I couldn't wrap my head around the formatting.
 
 So this took an extra day as I had to read and watch videos about how to actually properly format it, but after I managed that the rest was easy as I just had to fill in dates. 
 
