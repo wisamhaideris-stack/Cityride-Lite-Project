@@ -14,7 +14,31 @@ public class Main {
 
         int choice;
 
-        }
+        displayMenu();
+
+    }
+    public static void displayMenu() {
+
+        System.out.println("\nCityRide Lite\n");
+
+        System.out.println("1. Add Journey");
+        System.out.println("2. List Journeys");
+        System.out.println("3. Filter Journeys");
+        System.out.println("4. View Daily Summary");
+        System.out.println("5. View Totals By Passenger Type");
+        System.out.println("6. Remove Journey");
+        System.out.println("7. Reset Day");
+        System.out.println("8. Exit");
+
+    }
+
+    public static int getUserChoice() {
+
+        System.out.print("Enter Choice: ");
+        return input.nextInt();
+
+    }
+
 }
 
 class Journey{}
