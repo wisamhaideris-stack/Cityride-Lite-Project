@@ -36,7 +36,7 @@ public class Main {
                     break;
 
                 default:
-                    System.out.println("Invalid choice");
+                    System.out.println("\nInvalid choice");
 
             }
 
@@ -46,7 +46,7 @@ public class Main {
     }
     public static void displayMenu() {
 
-        System.out.println("\nCityRide Lite\n");
+        System.out.println("CityRide Lite\n");
 
         System.out.println("1. Add Journey");
         System.out.println("2. List Journeys");
