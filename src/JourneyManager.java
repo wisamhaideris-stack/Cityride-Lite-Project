@@ -48,7 +48,7 @@ public class JourneyManager{
 
         // Passenger Type
         System.out.print(
-                "Passenger Type (Adult/Student/Child/Senior Citezen): "
+                "Passenger Type (Adult/Student/Child/Senior_Citezen): "
         );
 
         String passengerInput =
