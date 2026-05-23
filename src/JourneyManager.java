@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.math.BigDecimal;
 
 public class JourneyManager{
 
@@ -85,29 +86,176 @@ public class JourneyManager{
         CityRideDataset.TimeBand timeBand =
                 CityRideDataset.TimeBand
                         .valueOf(bandInput);
+
+        // Fare
+        BigDecimal baseFare = calculator.calculateBaseFare(fromZone, toZone, timeBand);
+        BigDecimal finalFare = calculator.applyDiscount(baseFare, passengerType);
+
+        // Create Journey
+        Journey journey = new Journey(nextJourneyID, date, fromZone, toZone,
+                passengerType, timeBand, baseFare, finalFare);
+        // Store Journey
+        journeys.add(journey);
+
+        nextJourneyID++;
+
+        System.out.println(
+                "\nJourney Added Successfully"
+        );
     }
 
     public void listJourneys() {
+        if (journeys.isEmpty()) {
+
+            System.out.println(
+                    "\nNo Journeys Stored"
+            );
+
+            return;
+
+        }
+
+        for (Journey journey : journeys) {
+
+            journey.displayJourney();
+
+        }
 
     }
 
     public void filterJourneys() {
+        input.nextLine();
+        System.out.print(
+                "\nEnter Passenger Type To Filter: "
+        );
 
+        String filter = input.nextLine().toUpperCase();
+
+        boolean found = false;
+
+        for (Journey journey : journeys) {
+
+            // (Alexandra Obregon, 2024)
+            if (journey.getPassengerType().name().equals(filter)) {
+                journey.displayJourney();
+
+                found = true;
+            }
+
+        }
+        if (!found) {
+
+            System.out.println(
+                    "\nNo Matching Journeys Found"
+            );
+
+        }
     }
 
     public void removeJourney() {
+        System.out.print(
+                "\nEnter Journey ID To Remove: "
+        );
 
+        int id = input.nextInt();
+
+        boolean removed = false;
+
+        for (int i = 0; i < journeys.size(); i++) {
+
+            if (
+                    journeys.get(i)
+                            .getJourneyID() == id
+            ) {
+
+                journeys.remove(i);
+
+                removed = true;
+
+                System.out.println(
+                        "\nJourney Removed"
+                );
+
+                break;
+
+            }
+
+        }
+
+        if (!removed) {
+
+            System.out.println(
+                    "\nJourney ID Not Found"
+            );
+
+        }
     }
 
     public void resetJourneys() {
+        journeys.clear();
+
+        System.out.println(
+                "\nAll Journeys Reset"
+        );
 
     }
 
     public void viewDailySummary() {
-
+        // Not implemented yet
     }
 
     public void viewJourneysMenu() {
+
+        int choice;
+
+        do {
+
+            System.out.println(
+                    "\nView Journeys"
+            );
+
+            System.out.println(
+                    "1. View All Journeys"
+            );
+
+            System.out.println(
+                    "2. Filter Journeys"
+            );
+
+            System.out.println(
+                    "3. Passenger Totals"
+            );
+
+            System.out.println(
+                    "4. Return"
+            );
+
+            System.out.print(
+                    "Enter Choice: "
+            );
+
+            choice = input.nextInt();
+
+
+            // (Bro Code, 2024)
+
+            switch (choice) {
+
+                case 1:
+                    listJourneys();
+                    break;
+
+                case 2:
+                    filterJourneys();
+                    break;
+
+                case 3:
+                    // Not implemented yet
+                    break;
+
+            }
+
+        } while (choice != 4);
 
     }
 }

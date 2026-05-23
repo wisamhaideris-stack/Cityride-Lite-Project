@@ -18,17 +18,17 @@ public class Main {
                     break;
 
                 case 2:
-                    // list journey
+                    manager.viewJourneysMenu();
                     break;
                 case 3:
                     // daily summary
                     break;
                 case 4:
-                    // remove journey
+                    manager.removeJourney();
                     break;
 
                 case 5:
-                    // reset journeys
+                    manager.resetJourneys();
                     break;
 
                 case 6:
