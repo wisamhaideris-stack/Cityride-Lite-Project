@@ -23,4 +23,32 @@ public class JourneyManager{
         nextJourneyID = 1;
 
     }
+
+    public void addJourney() {
+
+    }
+
+    public void listJourneys() {
+
+    }
+
+    public void filterJourneys() {
+
+    }
+
+    public void removeJourney() {
+
+    }
+
+    public void resetJourneys() {
+
+    }
+
+    public void viewDailySummary() {
+
+    }
+
+    public void viewJourneysMenu() {
+
+    }
 }
