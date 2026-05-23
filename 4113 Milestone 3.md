@@ -25,24 +25,24 @@ Use the structure below to capture your evidence:
 
 ------------------------------------------------------------------------------------------------------------------------------
 
-Title of research:Learn Java Object Oriented Programming in 10 minutes! ğŸ§±
-Reference (link):[Learn Java Object Oriented Programming in 10 minutes! ğŸ§±](https://www.youtube.com/watch?v=DYbi93vuSaU)
+Title of research:Learn Java Object Oriented Programming in 10 minutes! ?§±
+Reference (link):[Learn Java Object Oriented Programming in 10 minutes! ?§±](https://www.youtube.com/watch?v=DYbi93vuSaU)
 How does the research help with coding practise?: This video teaches me the basics on how to create and write within classes and how they can interact with the main java class.
 Key coding ideas you could reuse in your program: I'll use different classes to hold attributes and methods related to the class, in practice I will segregate the program into different small functions that all work coherantly together to produce the final output.
 Screenshot of research:![](C:\Users\Wisam%20Haider\AppData\Roaming\marktext\images\2026-05-17-15-27-20-image.png)
 
 ------------------------------------------------------------------------------------------------------------------------------
 
-Title of research:Learn CONSTRUCTORS in 10 minutes! ğŸ”¨
-Reference (link):[Learn CONSTRUCTORS in 10 minutes! ğŸ”¨ - YouTube](https://www.youtube.com/watch?v=ZD7CB6wKg8A)
+Title of research:Learn CONSTRUCTORS in 10 minutes! ?”¨
+Reference (link):[Learn CONSTRUCTORS in 10 minutes! ?”¨ - YouTube](https://www.youtube.com/watch?v=ZD7CB6wKg8A)
 How does the research help with coding practise?: Taught me how to initialise objects to pass arguments into and set the initial variables
 Key coding ideas you could reuse in your program: I will use the constructors in order to actually create objects of a certain class within a program that holds a unique attribute, for example each journey will have different zones it passes and passengers etc... I will use this to cater to that.
 Screenshot of research:![](C:\Users\Wisam%20Haider\AppData\Roaming\marktext\images\2026-05-17-15-29-47-image.png)
 
 ------------------------------------------------------------------------------------------------------------------------------
 
-Title of research:Learn Java getters and setters in 10 minutes! ğŸ”
-Reference (link):[Learn Java getters and setters in 10 minutes! ğŸ”](https://www.youtube.com/watch?v=OjrR_C_UPjc)
+Title of research:Learn Java getters and setters in 10 minutes! ?”
+Reference (link):[Learn Java getters and setters in 10 minutes! ?”](https://www.youtube.com/watch?v=OjrR_C_UPjc)
 
 How does the research help with coding practise?: It teaches me how to protect my data and force the user to use certain (get) methods in order to access specific data or modify them (set methods).
 Key coding ideas you could reuse in your program: I could possible use this to filter journeys to display to the user, I could locate matching queries and only the journeys that have the matching queries.
@@ -50,8 +50,8 @@ Screenshot of research:![](C:\Users\Wisam%20Haider\AppData\Roaming\marktext\imag
 
 ---
 
-Title of research:Learn Java enhanced switches in 8 minutes! ğŸ’¡
-Reference (link):[Learn Java enhanced switches in 8 minutes! ğŸ’¡](https://www.youtube.com/watch?v=6q2JKiynteM)
+Title of research:Learn Java enhanced switches in 8 minutes! ?’¡
+Reference (link):[Learn Java enhanced switches in 8 minutes! ?’¡](https://www.youtube.com/watch?v=6q2JKiynteM)
 
 How does the research help with coding practise?: It shows me an alternative to using If, else statements that increase effeciency and reduce the amount of redundant code
 
@@ -290,13 +290,9 @@ public class SummaryManager{
     }  
 }
 
-
-
-  
-
 ### Updated Gantt Chart
 
-![](C:\Users\Wisam%20Haider\AppData\Roaming\marktext\images\2026-05-17-21-37-04-image.png)
+![](Gantt%20chart%20milestone%203.png)
 
 ------------------------------------------------------------------------------------------------------------------------------
 
