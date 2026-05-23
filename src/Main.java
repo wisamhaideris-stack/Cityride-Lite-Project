@@ -2,7 +2,7 @@ import java.util.Scanner;
 
 public class Main {
     static Scanner input = new Scanner(System.in);
-    static JourneyManager manager = new JourneyManager();
+    static JourneyManager manager = new JourneyManager(input);
     public static void main(String[] args) {
 
         int choice;
@@ -14,7 +14,7 @@ public class Main {
             switch (choice) {
 
                 case 1:
-                    // add journey
+                    manager.addJourney();
                     break;
 
                 case 2:
@@ -59,7 +59,9 @@ public class Main {
     public static int getUserChoice() {
 
         System.out.print("Enter Choice: ");
-        return input.nextInt();
+        int choice = input.nextInt();
+        input.nextLine();
 
+        return choice;
     }
 }
