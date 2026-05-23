@@ -22,31 +22,31 @@
 
 ##### Class Diagram
 
-![](C:\Users\Wisam%20Haider\IdeaProjects\T0495305_Wisam_IYO4113\ClassDiagram.png)
+![](ClassDiagram.png)
 
 ##### Main Flowchart
 
-![](C:\Users\Wisam%20Haider\IdeaProjects\T0495305_Wisam_IYO4113\Flow1.png)
+![](Flow1.png)
 
 ##### Add Journey Flowchart
 
-![](C:\Users\Wisam%20Haider\IdeaProjects\T0495305_Wisam_IYO4113\Flow2.png)
+![](Flow2.png)
 
 ##### List Journey Flowchart
 
-![](C:\Users\Wisam%20Haider\IdeaProjects\T0495305_Wisam_IYO4113\Flow3.png)
+![](Flow3.png)
 
 ##### Remove Journey Flowchart
 
-![](C:\Users\Wisam%20Haider\IdeaProjects\T0495305_Wisam_IYO4113\Flow4.png)
+![](Flow4.png)
 
 ##### Reset Journeys Flowchart
 
-![](C:\Users\Wisam%20Haider\IdeaProjects\T0495305_Wisam_IYO4113\Flow5.png)
+![](Flow5.png)
 
 ##### Display summary Flowchart
 
-![](C:\Users\Wisam%20Haider\IdeaProjects\T0495305_Wisam_IYO4113\Flow6.png)
+![](Flow6.png)
 
 ------------------------------------------------------------------------------------------------------------------------------
 
@@ -76,7 +76,7 @@ Key design ideas I plan on re-using include:
 
 - The clean flow of data handling
 
-Screenshot: ![](C:\Users\Wisam%20Haider\IdeaProjects\T0495305_Wisam_IYO4113\SS1.png)
+Screenshot: ![](SS1.png)
 
 #### Name of the program: Bus Reservation System
 
@@ -106,7 +106,7 @@ Key ideas I plan on re-using:
 
 Screenshot:
 
-![](C:\Users\Wisam%20Haider\IdeaProjects\T0495305_Wisam_IYO4113\SS2.png)
+![](SS2.png)
 
 ------------------------------------------------------------------------------------------------------------------------------
 
@@ -114,7 +114,7 @@ Screenshot:
 
 ---
 
-![](C:\Users\Wisam%20Haider\IdeaProjects\T0495305_Wisam_IYO4113\Gantt%202.png)
+![](Gantt%202.png)
 
 ------------------------------------------------------------------------------------------------------------------------------
 
