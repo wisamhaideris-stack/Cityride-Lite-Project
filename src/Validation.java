@@ -4,8 +4,7 @@ public class Validation{
     // Validate Zone
     public boolean validateZone(int zone) {
 
-        return zone >= CityRideDataset.MIN_ZONE
-                && zone <= CityRideDataset.MAX_ZONE;
+        return zone >= CityRideDataset.MIN_ZONE && zone <= CityRideDataset.MAX_ZONE;
 
     }
 
