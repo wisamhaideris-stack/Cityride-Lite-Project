@@ -13,6 +13,8 @@ public class Main {
 
             switch (choice) {
 
+                // (Bro Code, 2024)
+
                 case 1:
                     manager.addJourney();
                     break;
