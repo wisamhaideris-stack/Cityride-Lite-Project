@@ -4,8 +4,7 @@ import java.math.RoundingMode;
 public class FareCalculator {
 
     // Constructor
-    public FareCalculator() {
-    }
+    public FareCalculator() {}
 
     // Calculate Base Fare
     // (In28Minutes, 2018)
@@ -27,4 +26,31 @@ public class FareCalculator {
         return finalFare.setScale(2, RoundingMode.HALF_UP
         );
     }
+
+    public BigDecimal applyDailyCap(BigDecimal totalSpentToday, BigDecimal currentFare,
+            CityRideDataset.PassengerType passengerType) {
+
+        BigDecimal cap = CityRideDataset.DAILY_CAP.get(passengerType);
+
+        // (Oracle, 2026)
+        BigDecimal newTotal = totalSpentToday.add(currentFare);
+
+        if (newTotal.compareTo(cap) > 0) {
+
+            // (In28Minutes, 2018)
+            BigDecimal remaining = cap.subtract(totalSpentToday);
+
+            if (remaining.compareTo(BigDecimal.ZERO) < 0) {
+
+                return BigDecimal.ZERO;
+
+            }
+
+            return remaining;
+
+        }
+        return currentFare;
+
+    }
+
 }

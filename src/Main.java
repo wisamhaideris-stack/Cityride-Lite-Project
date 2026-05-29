@@ -25,6 +25,7 @@ public class Main {
                 case 3:
                     manager.viewDailySummary();
                     break;
+
                 case 4:
                     manager.removeJourney();
                     break;

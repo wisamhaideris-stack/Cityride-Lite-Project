@@ -57,9 +57,7 @@ public class JourneyManager{
         input.nextLine();
 
         // Passenger Type
-        System.out.print(
-                "Passenger Type (Adult/Student/Child/Senior_Citezen): "
-        );
+        System.out.print("Passenger Type (ADULT/STUDENT/CHILD/SENIOR_CITIZEN): ");
 
         String passengerInput =
                 input.nextLine().toUpperCase();
@@ -88,6 +86,8 @@ public class JourneyManager{
         }
         
         // Convert To Enums
+
+        // (Oracle, 2026)
         CityRideDataset.PassengerType passengerType = CityRideDataset.PassengerType.valueOf(passengerInput);
         CityRideDataset.TimeBand timeBand = CityRideDataset.TimeBand.valueOf(bandInput);
 
@@ -95,9 +95,24 @@ public class JourneyManager{
         BigDecimal baseFare = calculator.calculateBaseFare(fromZone, toZone, timeBand);
         BigDecimal finalFare = calculator.applyDiscount(baseFare, passengerType);
 
+        // Daily cap
+        BigDecimal totalSpentToday = BigDecimal.ZERO;
+
+        for (Journey existingJourney : journeys) {
+            if (existingJourney.getDate().equals(date) && existingJourney.getPassengerType() == passengerType) {
+
+                // (In28Minutes, 2018)
+                totalSpentToday = totalSpentToday.add(existingJourney.getFinalFare());
+
+            }
+        }
+        finalFare = calculator.applyDailyCap(totalSpentToday, finalFare, passengerType);
+
         // Create Journey
         Journey journey = new Journey(nextJourneyID, date, fromZone, toZone, passengerType, timeBand, baseFare, finalFare);
         // Store Journey
+
+        // (Oracle, 2026)
         journeys.add(journey);
 
         nextJourneyID++;
@@ -120,9 +135,7 @@ public class JourneyManager{
 
     public void filterByPassengerType() {
         input.nextLine();
-        System.out.print(
-                "\nEnter Passenger Type To Filter: "
-        );
+        System.out.print("\nEnter Passenger Type To Filter: ");
 
         String filter = input.nextLine().toUpperCase();
 
@@ -278,7 +291,7 @@ public class JourneyManager{
 
             System.out.println("6. Passenger Totals");
 
-            System.out.println("7. View Journey counts");
+            System.out.println("7. Journey categories");
 
             System.out.println("8. Return");
 
@@ -317,6 +330,7 @@ public class JourneyManager{
 
                 case 7:
                     summaryManager.countJourneyCategories(journeys);
+                    break;
 
             }
 
