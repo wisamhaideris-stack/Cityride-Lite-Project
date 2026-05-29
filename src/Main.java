@@ -23,7 +23,7 @@ public class Main {
                     manager.viewJourneysMenu();
                     break;
                 case 3:
-                    // daily summary
+                    manager.viewDailySummary();
                     break;
                 case 4:
                     manager.removeJourney();
@@ -51,7 +51,7 @@ public class Main {
         System.out.println("CityRide Lite\n");
 
         System.out.println("1. Add Journey");
-        System.out.println("2. List Journeys");
+        System.out.println("2. View Journeys");
         System.out.println("3. Daily summary");
         System.out.println("4. Remove Journey");
         System.out.println("5. Reset Day");

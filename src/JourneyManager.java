@@ -30,6 +30,15 @@ public class JourneyManager{
         System.out.print("Enter Date: ");
         String date = input.nextLine();
 
+        // Validate Date
+        if (!validation.validateDate(date)) {
+
+            System.out.println("Invalid Date");
+
+            return;
+
+        }
+
         // Zones
         System.out.print("Enter From Zone: ");
         int fromZone = input.nextInt();
@@ -79,51 +88,37 @@ public class JourneyManager{
         }
         
         // Convert To Enums
-        CityRideDataset.PassengerType passengerType =
-                CityRideDataset.PassengerType
-                        .valueOf(passengerInput);
-
-        CityRideDataset.TimeBand timeBand =
-                CityRideDataset.TimeBand
-                        .valueOf(bandInput);
+        CityRideDataset.PassengerType passengerType = CityRideDataset.PassengerType.valueOf(passengerInput);
+        CityRideDataset.TimeBand timeBand = CityRideDataset.TimeBand.valueOf(bandInput);
 
         // Fare
         BigDecimal baseFare = calculator.calculateBaseFare(fromZone, toZone, timeBand);
         BigDecimal finalFare = calculator.applyDiscount(baseFare, passengerType);
 
         // Create Journey
-        Journey journey = new Journey(nextJourneyID, date, fromZone, toZone,
-                passengerType, timeBand, baseFare, finalFare);
+        Journey journey = new Journey(nextJourneyID, date, fromZone, toZone, passengerType, timeBand, baseFare, finalFare);
         // Store Journey
         journeys.add(journey);
 
         nextJourneyID++;
 
-        System.out.println(
-                "\nJourney Added Successfully"
-        );
+        System.out.println("\nJourney Added Successfully");
     }
 
     public void listJourneys() {
         if (journeys.isEmpty()) {
-
-            System.out.println(
-                    "\nNo Journeys Stored"
-            );
+            System.out.println("\nNo Journeys Stored");
 
             return;
-
         }
 
         for (Journey journey : journeys) {
-
             journey.displayJourney();
-
         }
 
     }
 
-    public void filterJourneys() {
+    public void filterByPassengerType() {
         input.nextLine();
         System.out.print(
                 "\nEnter Passenger Type To Filter: "
@@ -136,8 +131,7 @@ public class JourneyManager{
         for (Journey journey : journeys) {
 
             // (Alexandra Obregon, 2024)
-            if (journey.getPassengerType().name().equals(filter)) {
-                journey.displayJourney();
+            if (journey.getPassengerType().name().equals(filter)) {journey.displayJourney();
 
                 found = true;
             }
@@ -149,6 +143,71 @@ public class JourneyManager{
                     "\nNo Matching Journeys Found"
             );
 
+        }
+    }
+
+    public void filterByTimeBand() {
+
+        input.nextLine();
+        System.out.print("\nEnter Time Band (PEAK/OFF_PEAK): ");
+
+        String filter = input.nextLine().toUpperCase();
+
+        boolean found = false;
+
+        for (Journey journey : journeys) {
+
+            if (journey.getTimeBand().name().equals(filter)) {
+                journey.displayJourney();
+                found = true;
+            }
+
+        }
+        if (!found) {
+
+            System.out.println("\nNo Matching Journeys Found");
+        }
+
+    }
+
+    public void filterByZone() {
+
+        System.out.print("\nEnter Zone: ");
+        int zone = input.nextInt();
+        boolean found = false;
+
+        for (Journey journey : journeys) {
+
+            if (journey.getFromZone() == zone || journey.getToZone() == zone) {
+                journey.displayJourney();
+                found = true;
+            }
+        }
+
+        if (!found) {
+            System.out.println("\nNo Matching Journeys Found");
+        }
+
+    }
+
+    public void filterByDate() {
+
+        input.nextLine();
+        System.out.print("\nEnter Date: ");
+        String date = input.nextLine();
+        boolean found = false;
+
+        for (Journey journey : journeys) {
+            if (journey.getDate().equals(date)) {
+
+                journey.displayJourney();
+                found = true;
+            }
+
+        }
+
+        if (!found) {
+            System.out.println("\nNo Matching Journeys Found");
         }
     }
 
@@ -172,9 +231,7 @@ public class JourneyManager{
 
                 removed = true;
 
-                System.out.println(
-                        "\nJourney Removed"
-                );
+                System.out.println("\nJourney Removed");
 
                 break;
 
@@ -184,9 +241,7 @@ public class JourneyManager{
 
         if (!removed) {
 
-            System.out.println(
-                    "\nJourney ID Not Found"
-            );
+            System.out.println("\nJourney ID Not Found");
 
         }
     }
@@ -194,14 +249,13 @@ public class JourneyManager{
     public void resetJourneys() {
         journeys.clear();
 
-        System.out.println(
-                "\nAll Journeys Reset"
-        );
+        System.out.println("\nAll Journeys Reset");
 
     }
 
     public void viewDailySummary() {
-        // Not implemented yet
+
+        summaryManager.calculateDailySummary(journeys);
     }
 
     public void viewJourneysMenu() {
@@ -210,29 +264,25 @@ public class JourneyManager{
 
         do {
 
-            System.out.println(
-                    "\nView Journeys"
-            );
+            System.out.println("\nView Journeys");
 
-            System.out.println(
-                    "1. View All Journeys"
-            );
+            System.out.println("1. View All Journeys");
 
-            System.out.println(
-                    "2. Filter Journeys"
-            );
+            System.out.println("2. Filter By Passenger Type");
 
-            System.out.println(
-                    "3. Passenger Totals"
-            );
+            System.out.println("3. Filter By Time Band");
 
-            System.out.println(
-                    "4. Return"
-            );
+            System.out.println("4. Filter By Zone");
 
-            System.out.print(
-                    "Enter Choice: "
-            );
+            System.out.println("5. Filter By Date");
+
+            System.out.println("6. Passenger Totals");
+
+            System.out.println("7. View Journey counts");
+
+            System.out.println("8. Return");
+
+            System.out.print("Enter Choice: ");
 
             choice = input.nextInt();
 
@@ -246,16 +296,31 @@ public class JourneyManager{
                     break;
 
                 case 2:
-                    filterJourneys();
+                    filterByPassengerType();
                     break;
 
                 case 3:
-                    // Not implemented yet
+                    filterByTimeBand();
                     break;
+
+                case 4:
+                    filterByZone();
+                    break;
+
+                case 5:
+                    filterByDate();
+                    break;
+
+                case 6:
+                    summaryManager.calculateTotalsByPassengerType(journeys);
+                    break;
+
+                case 7:
+                    summaryManager.countJourneyCategories(journeys);
 
             }
 
-        } while (choice != 4);
+        } while (choice != 8);
 
     }
 }

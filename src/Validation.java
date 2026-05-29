@@ -39,4 +39,10 @@ public class Validation{
             return false;
         }
     }
+
+    // Validate Date
+    public boolean validateDate(String date) {
+        return !date.isBlank();
+
+    }
 }

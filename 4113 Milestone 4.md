@@ -23,8 +23,6 @@
 
 Most of the code works, currently i havent made summary manager thus, view daily summary wont work aswell as the option to view by passenger type.
 
-
-
 Main
 ------------------------------------------------------------------------------------------------------------------------------
 
@@ -143,8 +141,6 @@ public class Validation{
     }  
 
 }
-
-
 
 ## Fare Calculator
 
@@ -443,8 +439,6 @@ public class JourneyManager{
 
 }
 
-
-
 ## Journey
 
 import java.math.BigDecimal;  
@@ -545,17 +539,12 @@ public class Journey {
 
 }
 
-
-
 ## Summary Manager
 
 public class SummaryManager{  
     public SummaryManager() {  
     }  
 }
-
-
-
 
 ------------------------------------------------------------------------------------------------------------------------------
 
@@ -576,19 +565,13 @@ Diary Entry 1 - 20/05/2026
 
 Today I started the day off by updating my Gantt chart, I was told in class that I should've filled in most of the future tasks and milestones beforehand which is why i lost some marks in the earlier milestones, so today I decided to add as much to my Gantt chart as I can so I'll maximise the marks I score in that aspect, I referred to the ATI and found all the task points that made sense to note down in the gantt chart with the appropriate dates. After I finished I decided instead of continuing the code today, I'd rather fix up my github and ensure all the images are on it and would show on each mileston to ensure future marks, I was struggling on this in earlier milestones as i had no idea, I would add the images to the github and embed it with the correct path but it would never seem to work, luckily I spoke with my tutor and figured I needed to copy the link from the repository online and embed that way, and so after doing that i was finished.
 
-
-
 ## Diary Entry 2 - 21/05/2026
 
 Today I got to work on my code, I started by creating the empty methods that i will use in my Journey manager class, then I was thinking about starting filling in the methods but I realized I needed to work on the validation part of the code first so I got to that. Now this part gave me some issues I knew that there had to be a way similar to python where they used try except blocks, but I just couldn't get the syntax down in java thus i had to refer and watch some bro code to learn how to use try and catch after that i simply just added it to the class and was finished, I ensured to cite it on the code however i will highlight it on this report and add the reference at the bottom as i didnt do that stuff in the program obviously.
 
-
-
 ## Diary Entry 3 - 22/05/2026
 
 Today I continued my coding, I decided to start working on the first method of the journey manager, add journey, this method was pretty simple just a case of taking in the input of each variable, and validating it, midway through I stopped to run the program and check, but I ran into the issue of my menu system taking in input twice before actually running, this was due to the way I declared the scanner in my other class and because of a bug in the journey manager class, I quickly fixed that up and option 1 in the menu was partially working. After that I continued the add journey method but I first had to learn how to use Big decimal as after converting the some of the input to enums i wanted to start working on the fares, which meant I needed to work on the Fare calculator class which meant i needed to study how to use big decimals, now another thing i did recieve some critism for by my teacher was why did i make fare calculator a seperate class, it's because if i didn't the journey manager class would be even bigger than what i imagine it will be and the way I designed the classes are each class carries different responsibilities in the code as a means to keep it tidy. I was tired thus i decided to call it a day and continue work tomorrow.
-
-
 
 ## Diary Entry 4 - 23/05/2026
 
@@ -596,30 +579,20 @@ Today i did quite alot of research, I had to learn how to use big decimal, in or
 
 Then after that I go to work on filter journey method, this method wasn't the hardest either i did need to research a method on checking the list and comparing, so i learned that, implemented it and moved on, the filter can only filter based on passenger at this point, will add a menu system later on to let the user choose what to filter by. Reset journey filter was dead easy just use the method I already made earlier in journey class and i made the remove journey class using a for loop to just compare the journey ID's and compare if exists, after that i was going to work on summary but decided i would work on it before the final submission as I still havent made the summary manager class so instead I made the second menu system for after the user decides to view the list they can then further decide to filter, i chose this to try and tidy it up a bit.
 
- 
-
 ## Diary Entry 5 - 24/05/2026
 
 Today was the last day of this milestone, all that was left was to assemble the document, add my citations and referencing, suprisingly this took some time as I couldn't get my hands on the ntic guide to good referencing for code guidelines, luckily after a bit of searching and asking around I found it and tediously start adding all the sitation, highlighting and adding the references, I wanted to make sure I was doing everything right in order for me to maximise my marks this time around.
-
-
-
-
 
 ---
 
 ### References
 
 - Bro Code. (2024, December 9). *Learn EXCEPTION HANDLING in 8 minutes! ⚠️*. [YouTube video]. Retrieved from: [Learn EXCEPTION HANDLING in 8 minutes! ⚠️ - YouTube](https://www.youtube.com/watch?v=u1PROb-aRUI) [Accessed 22 May 2026].
-  
-  
+
 - In28Minutes (2018, March 20). *Java BigDecimal Tutorial - 1*. [YouTube video]. Retrieved from: [Java BigDecimal Tutorial - 1 - YouTube](https://www.youtube.com/watch?v=MK6LDyQuv6U) [Accessed 23 May 2026].
-  
-  
+
 - Oracle. (2014). *RoundingMode (Java Platform SE 8)*. Retrieved from: [RoundingMode (Java Platform SE 8 )](https://docs.oracle.com/javase/8/docs/api/java/math/RoundingMode.html) [Accessed 23 May 2026].
-  
-  
+
 - Bro Code. (2024, December 5). *Learn Java enhanced switches in 8 minutes! 💡*. [YouTube video]. Retrieved from: [Learn Java enhanced switches in 8 minutes! 💡 - YouTube](https://www.youtube.com/watch?v=6q2JKiynteM&t=75s) [Accessed 18 May 2026].
-  
-  
+
 - Obregon, A. (2024, September 1). Java's Objects.equals() Method Explained, *Medium*. [online] Retrieved from: https://medium.com/@AlexanderObregon/javas-objects-equals-method-explained-3a84c963edfa [Accessed 23 May 2026].
