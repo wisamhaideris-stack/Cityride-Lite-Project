@@ -100,7 +100,7 @@ adult, student, senior and child
 
 ## Class Diagram
 
-![](Final%20Submission%20Class%20Diagram.png)
+![](Final%20Submission%20class%20diagram(2).png)
 
 
 
