@@ -225,9 +225,7 @@ public class JourneyManager{
     }
 
     public void removeJourney() {
-        System.out.print(
-                "\nEnter Journey ID To Remove: "
-        );
+        System.out.print("\nEnter Journey ID To Remove: ");
 
         int id = input.nextInt();
 
@@ -235,10 +233,7 @@ public class JourneyManager{
 
         for (int i = 0; i < journeys.size(); i++) {
 
-            if (
-                    journeys.get(i)
-                            .getJourneyID() == id
-            ) {
+            if (journeys.get(i).getJourneyID() == id) {
 
                 journeys.remove(i);
 
