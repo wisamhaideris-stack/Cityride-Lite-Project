@@ -137,11 +137,11 @@ Startup menu
 
 Create rider
 
-![](C:\Users\Wisam%20Haider\AppData\Roaming\marktext\images\2026-06-14-00-48-22-image.png)
+![](C:\Users\Wisam%20Haider\AppData\Roaming\marktext\images\2026-06-14-10-42-30-image.png)
 
 Admin Menu 
 
-![](C:\Users\Wisam%20Haider\AppData\Roaming\marktext\images\2026-06-14-00-50-33-image.png)
+![](C:\Users\Wisam%20Haider\AppData\Roaming\marktext\images\2026-06-14-10-42-59-image.png)
 
 Main Menu
 
@@ -161,7 +161,7 @@ Remove Journey
 
 Reset Journey
 
-![](C:\Users\Wisam%20Haider\AppData\Roaming\marktext\images\2026-06-14-00-53-29-image.png)
+![](C:\Users\Wisam%20Haider\AppData\Roaming\marktext\images\2026-06-14-10-45-32-image.png)
 
 Display Summary
 
