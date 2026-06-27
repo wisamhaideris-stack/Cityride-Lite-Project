@@ -9,10 +9,13 @@ public class Journey {
     private CityRideDataset.TimeBand timeBand;
     private BigDecimal baseFare;
     private BigDecimal finalFare;
+    private BigDecimal discountApplied;
+    private int zonesCrossed;
 
     // Constructor
     public Journey(int journeyID, String date, int fromZone, int toZone, CityRideDataset.PassengerType passengerType,
-                   CityRideDataset.TimeBand timeBand, BigDecimal baseFare, BigDecimal finalFare)
+                   CityRideDataset.TimeBand timeBand, BigDecimal baseFare, BigDecimal finalFare,
+                   BigDecimal discountApplied, int zonesCrossed)
     {
 
         this.journeyID = journeyID;
@@ -23,6 +26,8 @@ public class Journey {
         this.timeBand = timeBand;
         this.baseFare = baseFare;
         this.finalFare = finalFare;
+        this.discountApplied = discountApplied;
+        this.zonesCrossed = zonesCrossed;
 
     }
 
@@ -33,9 +38,7 @@ public class Journey {
     public String getDate() {
         return date;
     }
-    public int getFromZone() {
-        return fromZone;
-    }
+    public int getFromZone() { return fromZone;}
     public int getToZone() {
         return toZone;
     }
@@ -51,6 +54,8 @@ public class Journey {
     public BigDecimal getFinalFare() {
         return finalFare;
     }
+    public BigDecimal getDiscountApplied() {return discountApplied;}
+    public int getZonesCrossed() {return zonesCrossed;}
 
     // Set methods
     public void setJourneyID(int journeyID) {
@@ -77,10 +82,16 @@ public class Journey {
     public void setFinalFare(BigDecimal finalFare) {
         this.finalFare = finalFare;
     }
+    public void setDiscountApplied(BigDecimal discountApplied) {this.discountApplied = discountApplied;}
+
+    public void setZonesCrossed(int zonesCrossed) {this.zonesCrossed = zonesCrossed;}
 
     // Methods
     public int calculateZonesCrossed() {
-        return Math.abs(fromZone - toZone) + 1;
+
+        zonesCrossed = Math.abs(fromZone - toZone) + 1;
+
+        return zonesCrossed;
 
     }
     public void displayJourney() {
@@ -92,5 +103,7 @@ public class Journey {
         System.out.println("Time Band: " + timeBand);
         System.out.println("Base Fare: " + baseFare);
         System.out.println("Final Fare: " + finalFare);
+        System.out.println("Zones Crossed: " + zonesCrossed);
+        System.out.println("Discount Applied: " + discountApplied);
     }
 }

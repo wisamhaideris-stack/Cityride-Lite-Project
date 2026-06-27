@@ -108,8 +108,12 @@ public class JourneyManager{
         }
         finalFare = calculator.applyDailyCap(totalSpentToday, finalFare, passengerType);
 
+        BigDecimal discountApplied = baseFare.subtract(finalFare);
+
+        int zonesCrossed = Math.abs(fromZone - toZone) + 1;
+
         // Create Journey
-        Journey journey = new Journey(nextJourneyID, date, fromZone, toZone, passengerType, timeBand, baseFare, finalFare);
+        Journey journey = new Journey(nextJourneyID, date, fromZone, toZone, passengerType, timeBand, baseFare, finalFare, discountApplied, zonesCrossed);
         // Store Journey
 
         // (Oracle, 2026)
@@ -332,4 +336,11 @@ public class JourneyManager{
         } while (choice != 8);
 
     }
+
+    public ArrayList<Journey> getJourneys() {
+
+        return journeys;
+
+    }
+
 }
