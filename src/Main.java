@@ -4,7 +4,6 @@ public class Main {
     static Scanner input = new Scanner(System.in);
     static JourneyManager manager = new JourneyManager(input);
     public static void main(String[] args) {
-
         int startupChoice;
 
         do {
