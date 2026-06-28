@@ -3,6 +3,7 @@ import java.util.Scanner;
 public class Main {
     static Scanner input = new Scanner(System.in);
     static JourneyManager manager = new JourneyManager(input);
+    static Validation validation = new Validation();
     public static void main(String[] args) {
         int startupChoice;
 
@@ -17,29 +18,24 @@ public class Main {
                 case 1:
 
                     createRiderProfile();
-
                     break;
 
                 case 2:
 
                     System.out.println("\nNo saved riders.");
-
                     break;
 
                 case 3:
 
                     System.out.println("\nAdmin menu not implemented yet.");
-
                     break;
 
                 case 4:
 
                     System.out.println("\nProgram Closed.");
-
                     return;
 
                 default:
-
                     System.out.println("\nInvalid Choice.");
 
             }
@@ -102,11 +98,7 @@ public class Main {
 
     }
     public static int getUserChoice() {
-
-        System.out.print("Enter Choice: ");
-        int choice = input.nextInt();
-        input.nextLine();
-
+        int choice = validation.getValidInteger(input, "Enter Choice: ");
         return choice;
     }
 

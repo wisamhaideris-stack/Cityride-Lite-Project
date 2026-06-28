@@ -31,6 +31,9 @@ public class JourneyManager{
 
 
     public void addJourney() {
+
+        boolean valid = true;
+
         System.out.println("\nAdd Journey");
 
         // Date
@@ -42,93 +45,104 @@ public class JourneyManager{
 
             System.out.println("Invalid Date");
 
-            return;
+            valid = false;
 
         }
 
-        // Zones
-        System.out.print("Enter From Zone: ");
-        int fromZone = input.nextInt();
+        int fromZone = 0;
+        int toZone = 0;
 
-        System.out.print("Enter To Zone: ");
-        int toZone = input.nextInt();
+        if (valid) {
 
-        // Validate Zones
-        if (!validation.validateZone(fromZone) || !validation.validateZone(toZone)) {
+            // Zones
+            fromZone = validation.getValidInteger(input, "Enter From Zone: ");
+            toZone = validation.getValidInteger(input, "Enter To Zone: ");
 
-            System.out.println("Invalid Zone");
+            // Validate Zones
+            if (!validation.validateZone(fromZone) || !validation.validateZone(toZone)) {
 
-            return;
-        }
+                System.out.println("Invalid Zone");
 
-        input.nextLine();
-
-        // Passenger Type
-        System.out.print("Passenger Type (ADULT/STUDENT/CHILD/SENIOR_CITIZEN): ");
-
-        String passengerInput =
-                input.nextLine().toUpperCase();
-
-        // Validate Passenger Type
-        if (!validation.validatePassengerType(passengerInput)) {
-
-            System.out.println("Invalid Passenger Type");
-
-            return;
-        }
-        // Time Band
-        System.out.print(
-                "Time Band (PEAK/OFF_PEAK): "
-        );
-
-        String bandInput =
-                input.nextLine().toUpperCase();
-
-        // Validate Time Band
-        if (!validation.validateTimeBand(bandInput)) {
-
-            System.out.println("Invalid Time Band");
-
-            return;
-        }
-        
-        // Convert To Enums
-
-        // (Oracle, 2026)
-        CityRideDataset.PassengerType passengerType = CityRideDataset.PassengerType.valueOf(passengerInput);
-        CityRideDataset.TimeBand timeBand = CityRideDataset.TimeBand.valueOf(bandInput);
-
-        // Fare
-        BigDecimal baseFare = calculator.calculateBaseFare(fromZone, toZone, timeBand);
-        BigDecimal finalFare = calculator.applyDiscount(baseFare, passengerType);
-
-        // Daily cap
-        BigDecimal totalSpentToday = BigDecimal.ZERO;
-
-        for (Journey existingJourney : journeys) {
-            if (existingJourney.getDate().equals(date) && existingJourney.getPassengerType() == passengerType) {
-
-                // (In28Minutes, 2018)
-                totalSpentToday = totalSpentToday.add(existingJourney.getFinalFare());
-
+                valid = false;
             }
+
         }
-        finalFare = calculator.applyDailyCap(totalSpentToday, finalFare, passengerType);
 
-        BigDecimal discountApplied = baseFare.subtract(finalFare);
+        String passengerInput = "";
+        String bandInput = "";
 
-        int zonesCrossed = Math.abs(fromZone - toZone) + 1;
+        if (valid) {
 
-        // Create Journey
-        Journey journey = new Journey(nextJourneyID, date, fromZone, toZone, passengerType, timeBand, baseFare, finalFare, discountApplied, zonesCrossed);
-        // Store Journey
+            // Passenger Type
+            System.out.print("Passenger Type (ADULT/STUDENT/CHILD/SENIOR_CITIZEN): ");
 
-        // (Oracle, 2026)
-        journeys.add(journey);
+            passengerInput = input.nextLine().toUpperCase();
 
-        nextJourneyID++;
+            // Validate Passenger Type
+            if (!validation.validatePassengerType(passengerInput)) {
+                System.out.println("Invalid Passenger Type");
+                valid = false;
+            }
 
-        System.out.println("\nJourney Added Successfully");
+        }
+
+        if (valid) {
+
+            // Time Band
+            System.out.print("Time Band (PEAK/OFF_PEAK): ");
+
+            bandInput = input.nextLine().toUpperCase();
+
+            // Validate Time Band
+            if (!validation.validateTimeBand(bandInput)) {
+                System.out.println("Invalid Time Band");
+                valid = false;
+            }
+
+        }
+
+        if (valid) {
+
+            // Convert To Enums
+
+            // (Oracle, 2026)
+            CityRideDataset.PassengerType passengerType = CityRideDataset.PassengerType.valueOf(passengerInput);
+            CityRideDataset.TimeBand timeBand = CityRideDataset.TimeBand.valueOf(bandInput);
+
+            // Fare
+            BigDecimal baseFare = calculator.calculateBaseFare(fromZone, toZone, timeBand);
+            BigDecimal finalFare = calculator.applyDiscount(baseFare, passengerType);
+
+            // Daily cap
+            BigDecimal totalSpentToday = BigDecimal.ZERO;
+
+            for (Journey existingJourney : journeys) {
+
+                if (existingJourney.getDate().equals(date) && existingJourney.getPassengerType() == passengerType) {
+
+                    // (In28Minutes, 2018)
+                    totalSpentToday = totalSpentToday.add(existingJourney.getFinalFare());
+                }
+            }
+
+            finalFare = calculator.applyDailyCap(totalSpentToday, finalFare, passengerType);
+
+            BigDecimal discountApplied = baseFare.subtract(finalFare);
+
+            int zonesCrossed = Math.abs(fromZone - toZone) + 1;
+
+            // Create Journey
+            Journey journey = new Journey(nextJourneyID, date, fromZone, toZone, passengerType, timeBand, baseFare, finalFare, discountApplied, zonesCrossed);
+
+            // Store Journey
+
+            // (Oracle, 2026)
+            journeys.add(journey);
+            nextJourneyID++;
+            System.out.println("\nJourney Added Successfully");
+
+        }
+
     }
 
     public void listJourneys() {

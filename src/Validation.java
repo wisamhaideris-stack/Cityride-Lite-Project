@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 public class Validation{
     public Validation() {
     }
@@ -43,6 +45,29 @@ public class Validation{
     // Validate Date
     public boolean validateDate(String date) {
         return !date.isBlank();
+
+    }
+
+    public int getValidInteger(Scanner input, String message) {
+
+        int number = 0;
+        boolean valid = false;
+
+        while (!valid) {
+            System.out.print(message);
+            if (input.hasNextInt()) {
+
+                number = input.nextInt();
+                input.nextLine();
+
+                valid = true;
+            }
+            else {
+                System.out.println("Invalid input. Please enter a whole number.");
+                input.nextLine();
+            }
+        }
+        return number;
 
     }
 }
