@@ -1,5 +1,3 @@
-
-
 | Module Code           | IY4113                                             |
 | --------------------- |:-------------------------------------------------- |
 | Group                 | A                                                  |
@@ -101,10 +99,6 @@ adult, student, senior and child
 ## Class Diagram
 
 ![](Final%20Submission%20class%20diagram(2).png)
-
-
-
-
 
 ## Main
 
@@ -491,11 +485,11 @@ String bandInput =
         input.nextLine().toUpperCase();  
 
 // Validate Time Band  
-if (!validation.validateTimeBand(bandInput)) {  
+if (!validation.validateTimeBand(bandInput)) {
 
-    System.out.println("Invalid Time Band");  
-    
-    return;  
+System.out.println("Invalid Time Band"); 
+
+return;  
 
 }  
 
