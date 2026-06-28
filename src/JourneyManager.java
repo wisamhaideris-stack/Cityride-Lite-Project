@@ -10,6 +10,7 @@ public class JourneyManager{
     private FareCalculator calculator;
     private SummaryManager summaryManager;
     private int nextJourneyID;
+    private Rider currentRider;
 
     // Constructor
     public JourneyManager(Scanner input) {
@@ -20,8 +21,14 @@ public class JourneyManager{
         calculator = new FareCalculator();
         summaryManager = new SummaryManager();
         nextJourneyID = 1;
+        currentRider = null;
 
     }
+
+    public void setCurrentRider(Rider rider) {currentRider = rider;}
+    public Rider getCurrentRider() {return currentRider;}
+
+
 
     public void addJourney() {
         System.out.println("\nAdd Journey");
