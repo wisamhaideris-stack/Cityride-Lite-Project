@@ -1,5 +1,8 @@
 import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
+import java.lang.reflect.Type;
+import java.util.ArrayList;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -10,65 +13,56 @@ import java.util.List;
 
 public class FileManager {
 
-    private static final String PROFILE_FILE = "riderProfile.json";
+    private static final String RIDER_FILE = "riders.json";
     private static final String JOURNEY_FILE = "journeys.csv";
 
     // Rider Profile
 
-    public void saveProfile(Rider rider) {
+    public void saveRiders(ArrayList<Rider> riders) {
 
         // (HowToDoItInJava, 2023)
         Gson gson = new Gson();
 
         try {
-
-            FileWriter writer = new FileWriter(PROFILE_FILE);
-
-            gson.toJson(rider, writer);
-
+            // (Geeks4Geeks, 2025)
+            FileWriter writer = new FileWriter(RIDER_FILE);
+            gson.toJson(riders, writer);
             writer.close();
-
-            System.out.println("\nProfile saved successfully.");
-
-        }
-        catch (IOException e) {
-
-            System.out.println("\nError saving profile.");
+            System.out.println("\nRiders saved successfully.");
 
         }
+
+        catch (IOException e) {System.out.println("\nError saving riders.");}
 
     }
-    public Rider loadProfile() {
+    public ArrayList<Rider> loadRiders() {
 
-        Rider rider = null;
+        ArrayList<Rider> riders = new ArrayList<>();
 
         // (HowToDoItInJava, 2023)
         Gson gson = new Gson();
 
         try {
-
-            FileReader reader = new FileReader(PROFILE_FILE);
-
-            rider = gson.fromJson(reader, Rider.class);
-
+            // (Geeks4Geeks, 2025)
+            FileReader reader = new FileReader(RIDER_FILE);
+            Type riderListType = new TypeToken<ArrayList<Rider>>() {}.getType();
+            riders = gson.fromJson(reader, riderListType);
             reader.close();
-
-            System.out.println("\nProfile loaded successfully.");
-
-        }
-        catch (FileNotFoundException e) {
-
-            System.out.println("\nNo rider profile found.");
-
-        }
-        catch (IOException e) {
-
-            System.out.println("\nError loading profile.");
-
         }
 
-        return rider;
+        catch (FileNotFoundException e) {riders = new ArrayList<>();}
+        catch (IOException e) {System.out.println("\nError loading riders.");}
 
+        if (riders == null) {riders = new ArrayList<>();}
+
+        return riders;
+
+    }
+
+    public void addRider(Rider rider) {
+        ArrayList<Rider> riders = loadRiders();
+        riders.add(rider);
+        saveRiders(riders);
     }
 
     // Configuration
