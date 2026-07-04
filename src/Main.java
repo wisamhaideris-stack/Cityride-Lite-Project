@@ -1,3 +1,4 @@
+import java.math.BigDecimal;
 import java.util.Scanner;
 import java.util.ArrayList;
 
@@ -110,15 +111,11 @@ public class Main {
         System.out.print("Enter Name: ");
         String name = input.nextLine();
         System.out.print("Passenger Type (ADULT/STUDENT/CHILD/SENIOR_CITIZEN): ");
-        CityRideDataset.PassengerType passengerType = CityRideDataset.PassengerType.valueOf(input.nextLine().toUpperCase());
+        CityRideDataset.PassengerType passengerType = validation.getValidPassengerType(input);
         System.out.print("Default Payment Method: ");
         String paymentMethod = input.nextLine();
         Rider rider = new Rider(name, passengerType, paymentMethod);
-
-// Save rider
         fm.addRider(rider);
-
-// Set as current rider
         manager.setCurrentRider(rider);
         System.out.println("\nProfile created successfully.");
         System.out.println("Welcome " + rider.getName());
@@ -259,19 +256,133 @@ public class Main {
 
     }
     public static void editDiscountRates() {
-
         System.out.println("\nEdit Discount Rates");
-        System.out.println("Coming next.");
+
+        System.out.println("1. Adult");
+        System.out.println("2. Student");
+        System.out.println("3. Child");
+        System.out.println("4. Senior Citizen");
+        System.out.println("5. Return");
+
+        int choice = validation.getValidInteger(input, "Enter Choice: ");
+
+        CityRideDataset.PassengerType passengerType = null;
+
+        switch (choice) {
+
+            case 1:
+                passengerType = CityRideDataset.PassengerType.ADULT;
+                break;
+
+            case 2:
+                passengerType = CityRideDataset.PassengerType.STUDENT;
+                break;
+
+            case 3:
+                passengerType = CityRideDataset.PassengerType.CHILD;
+                break;
+
+            case 4:
+                passengerType = CityRideDataset.PassengerType.SENIOR_CITIZEN;
+                break;
+
+            case 5:
+                return;
+
+            default:
+                System.out.println("\nInvalid Choice.");
+                return;
+
+        }
+
+        System.out.println("\nCurrent Discount: " + configuration.getDiscountRates().get(passengerType));
+
+        System.out.print("Enter New Discount: ");
+        double newDiscount = input.nextDouble();
+        input.nextLine();
+        configuration.getDiscountRates().put(passengerType, BigDecimal.valueOf(newDiscount));
+        System.out.println("\nDiscount Updated Successfully.");
+    }
+
+
+    public static void editDailyCaps() {
+
+        System.out.println("\nEdit Daily Caps");
+
+        System.out.println("1. Adult");
+        System.out.println("2. Student");
+        System.out.println("3. Child");
+        System.out.println("4. Senior Citizen");
+        System.out.println("5. Return");
+
+        int choice = validation.getValidInteger(input, "Enter Choice: ");
+        CityRideDataset.PassengerType passengerType = null;
+
+        switch (choice) {
+
+            case 1:
+                passengerType = CityRideDataset.PassengerType.ADULT;
+                break;
+            case 2:
+                passengerType = CityRideDataset.PassengerType.STUDENT;
+                break;
+            case 3:
+                passengerType = CityRideDataset.PassengerType.CHILD;
+                break;
+            case 4:
+                passengerType = CityRideDataset.PassengerType.SENIOR_CITIZEN;
+                break;
+            case 5:
+                return;
+            default:
+                System.out.println("\nInvalid Choice.");
+                return;
+
+        }
+
+        System.out.println("\nCurrent Daily Cap: £" + configuration.getDailyCaps().get(passengerType));
+        System.out.print("Enter New Daily Cap: ");
+
+        double newCap = input.nextDouble();
+        input.nextLine();
+
+        configuration.getDailyCaps().put(
+                passengerType,
+                BigDecimal.valueOf(newCap)
+        );
+
+        System.out.println("\nDaily Cap Updated Successfully.");
 
     }
-    public static void editDailyCaps() {
-        System.out.println("\nEdit Daily Caps");
-        System.out.println("Coming next.");
-    }
+
     public static void editBaseFares() {
 
-        System.out.println("\nEdit Base Fares");
-        System.out.println("Coming next.");
+        System.out.println("\nEdit Base Fare");
+        int fromZone = validation.getValidInteger(input, "From Zone: ");
+        int toZone = validation.getValidInteger(input, "To Zone: ");
 
+        System.out.println("1. Peak");
+        System.out.println("2. Off Peak");
+
+        int bandChoice = validation.getValidInteger(input, "Enter Choice: ");
+
+        CityRideDataset.TimeBand timeBand;
+
+        if (bandChoice == 1) {
+            timeBand = CityRideDataset.TimeBand.PEAK;
+        }
+        else {
+            timeBand = CityRideDataset.TimeBand.OFF_PEAK;
+        }
+
+        String key = CityRideDataset.key(fromZone, toZone, timeBand);
+
+        System.out.println("\nCurrent Base Fare: £" + configuration.getBaseFares().get(key));
+
+        System.out.print("Enter New Base Fare: ");
+        double newFare = input.nextDouble();
+        input.nextLine();
+        configuration.getBaseFares().put(key, BigDecimal.valueOf(newFare));
+        System.out.println("\nBase Fare Updated Successfully.");
     }
 }

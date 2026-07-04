@@ -33,21 +33,8 @@ public class JourneyManager{
     public void addJourney() {
 
         boolean valid = true;
-
         System.out.println("\nAdd Journey");
-
-        // Date
-        System.out.print("Enter Date: ");
-        String date = input.nextLine();
-
-        // Validate Date
-        if (!validation.validateDate(date)) {
-
-            System.out.println("Invalid Date");
-
-            valid = false;
-
-        }
+        String date = validation.getValidDate(input);
 
         int fromZone = 0;
         int toZone = 0;
@@ -68,47 +55,18 @@ public class JourneyManager{
 
         }
 
-        String passengerInput = "";
-        String bandInput = "";
+        CityRideDataset.PassengerType passengerType = null;
+        CityRideDataset.TimeBand timeBand = null;
 
         if (valid) {
-
-            // Passenger Type
-            System.out.print("Passenger Type (ADULT/STUDENT/CHILD/SENIOR_CITIZEN): ");
-
-            passengerInput = input.nextLine().toUpperCase();
-
-            // Validate Passenger Type
-            if (!validation.validatePassengerType(passengerInput)) {
-                System.out.println("Invalid Passenger Type");
-                valid = false;
-            }
-
+            passengerType = validation.getValidPassengerType(input);
         }
 
         if (valid) {
-
-            // Time Band
-            System.out.print("Time Band (PEAK/OFF_PEAK): ");
-
-            bandInput = input.nextLine().toUpperCase();
-
-            // Validate Time Band
-            if (!validation.validateTimeBand(bandInput)) {
-                System.out.println("Invalid Time Band");
-                valid = false;
-            }
-
+            timeBand = validation.getValidTimeBand(input);
         }
 
         if (valid) {
-
-            // Convert To Enums
-
-            // (Oracle, 2026)
-            CityRideDataset.PassengerType passengerType = CityRideDataset.PassengerType.valueOf(passengerInput);
-            CityRideDataset.TimeBand timeBand = CityRideDataset.TimeBand.valueOf(bandInput);
-
             // Fare
             BigDecimal baseFare = calculator.calculateBaseFare(fromZone, toZone, timeBand);
             BigDecimal finalFare = calculator.applyDiscount(baseFare, passengerType);
@@ -119,7 +77,6 @@ public class JourneyManager{
             for (Journey existingJourney : journeys) {
 
                 if (existingJourney.getDate().equals(date) && existingJourney.getPassengerType() == passengerType) {
-
                     // (In28Minutes, 2018)
                     totalSpentToday = totalSpentToday.add(existingJourney.getFinalFare());
                 }
@@ -159,43 +116,32 @@ public class JourneyManager{
     }
 
     public void filterByPassengerType() {
-        input.nextLine();
-        System.out.print("\nEnter Passenger Type To Filter: ");
 
-        String filter = input.nextLine().toUpperCase();
-
+        CityRideDataset.PassengerType filter = validation.getValidPassengerType(input);
         boolean found = false;
 
         for (Journey journey : journeys) {
 
             // (Alexandra Obregon, 2024)
-            if (journey.getPassengerType().name().equals(filter)) {journey.displayJourney();
-
+            if (journey.getPassengerType() == filter) {
+                journey.displayJourney();
                 found = true;
             }
-
         }
         if (!found) {
-
-            System.out.println(
-                    "\nNo Matching Journeys Found"
-            );
-
+            System.out.println("\nNo Matching Journeys Found");
         }
     }
 
     public void filterByTimeBand() {
 
-        input.nextLine();
-        System.out.print("\nEnter Time Band (PEAK/OFF_PEAK): ");
-
-        String filter = input.nextLine().toUpperCase();
+        CityRideDataset.TimeBand filter = validation.getValidTimeBand(input);
 
         boolean found = false;
 
         for (Journey journey : journeys) {
 
-            if (journey.getTimeBand().name().equals(filter)) {
+            if (journey.getTimeBand() == filter) {
                 journey.displayJourney();
                 found = true;
             }
@@ -210,8 +156,8 @@ public class JourneyManager{
 
     public void filterByZone() {
 
-        System.out.print("\nEnter Zone: ");
-        int zone = input.nextInt();
+        int zone = validation.getValidInteger(input, "\nEnter Zone: ");
+
         boolean found = false;
 
         for (Journey journey : journeys) {
@@ -230,9 +176,8 @@ public class JourneyManager{
 
     public void filterByDate() {
 
-        input.nextLine();
-        System.out.print("\nEnter Date: ");
-        String date = input.nextLine();
+        String date = validation.getValidDate(input);
+
         boolean found = false;
 
         for (Journey journey : journeys) {
@@ -250,9 +195,7 @@ public class JourneyManager{
     }
 
     public void removeJourney() {
-        System.out.print("\nEnter Journey ID To Remove: ");
-
-        int id = input.nextInt();
+        int id = validation.getValidInteger(input, "\nEnter Journey ID To Remove: ");
 
         boolean removed = false;
 
