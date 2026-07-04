@@ -4,8 +4,10 @@ import java.util.ArrayList;
 public class Main {
     static Scanner input = new Scanner(System.in);
     static FileManager fm = new FileManager();
-    static JourneyManager manager = new JourneyManager(input);
+    static Configuration configuration = fm.loadConfiguration();
+    static JourneyManager manager = new JourneyManager(input, configuration);
     static Validation validation = new Validation();
+    static Admin admin = new Admin("", "admin123");
 
 
     public static void main(String[] args) {
@@ -25,7 +27,7 @@ public class Main {
                         riderLoggedIn = loadRider();
                         break;
                     case 3:
-                        System.out.println("\nAdmin menu not implemented yet.");
+                        adminLogin();
                         break;
                     case 4:
                         System.out.println("\nProgram Closed.");
@@ -151,5 +153,125 @@ public class Main {
             }
         }
         return loaded;
+    }
+
+    public static void adminLogin() {
+
+        System.out.print("\nEnter Admin Password: ");
+        String password = input.nextLine();
+
+        if (password.equals(admin.getPassword())) {
+
+            System.out.println("\nLogin Successful.");
+            adminMenu();
+        }
+        else {
+            System.out.println("\nIncorrect Password.");
+        }
+
+    }
+
+    public static void adminMenu() {
+
+        int choice;
+
+        do {
+
+            System.out.println("\n-------------------------");
+            System.out.println("       ADMIN MENU");
+            System.out.println("-------------------------");
+
+            System.out.println("1. View Configuration");
+            System.out.println("2. Edit Discount Rates");
+            System.out.println("3. Edit Daily Caps");
+            System.out.println("4. Edit Base Fares");
+            System.out.println("5. Save Configuration");
+            System.out.println("6. Reload Default Configuration");
+            System.out.println("7. Return");
+
+            choice = validation.getValidInteger(input, "Enter Choice: ");
+
+            switch (choice) {
+
+                case 1:
+                    viewConfiguration();
+                    break;
+                case 2:
+                    editDiscountRates();
+                    break;
+                case 3:
+                    editDailyCaps();
+                    break;
+                case 4:
+                    editBaseFares();
+                    break;
+                case 5:
+                    fm.saveConfiguration(configuration);
+                    break;
+
+                case 6:
+
+                    configuration.resetToDefaults();
+                    System.out.println("\nDefault configuration restored.");
+                    break;
+                case 7:
+                    System.out.println("\nReturning...");
+                    break;
+                default:
+                    System.out.println("\nInvalid Choice.");
+            }
+
+        } while (choice != 7);
+
+    }
+    public static void viewConfiguration() {
+
+        System.out.println("\n----------------------------");
+        System.out.println("      CONFIGURATION");
+        System.out.println("----------------------------");
+
+        System.out.println("\nDISCOUNT RATES");
+
+        for (CityRideDataset.PassengerType type : CityRideDataset.PassengerType.values()) {
+
+            System.out.println(type + " : "
+                    + configuration.getDiscountRates().get(type));
+
+        }
+
+        System.out.println("\nDAILY CAPS");
+
+        for (CityRideDataset.PassengerType type : CityRideDataset.PassengerType.values()) {
+
+            System.out.println(type + " : £"
+                    + configuration.getDailyCaps().get(type));
+
+        }
+
+        System.out.println("\nBASE FARES");
+
+        for (String key : configuration.getBaseFares().keySet()) {
+
+            System.out.println(key + " : £"
+                    + configuration.getBaseFares().get(key));
+
+        }
+
+    }
+    public static void editDiscountRates() {
+
+        System.out.println("\nEdit Discount Rates");
+        System.out.println("Coming next.");
+
+    }
+    public static void editDailyCaps() {
+        System.out.println("\nEdit Daily Caps");
+        System.out.println("Coming next.");
+    }
+    public static void editBaseFares() {
+
+        System.out.println("\nEdit Base Fares");
+        System.out.println("Coming next.");
+
     }
 }

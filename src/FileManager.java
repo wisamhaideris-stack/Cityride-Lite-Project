@@ -15,6 +15,7 @@ public class FileManager {
 
     private static final String RIDER_FILE = "riders.json";
     private static final String JOURNEY_FILE = "journeys.csv";
+    private static final String CONFIGURATION_FILE = "configuration.json";
 
     // Rider Profile
 
@@ -67,11 +68,36 @@ public class FileManager {
 
     // Configuration
 
-    public void saveConfiguration() {
+    public void saveConfiguration(Configuration configuration) {
 
+        Gson gson = new Gson();
+        try {
+            FileWriter writer = new FileWriter(CONFIGURATION_FILE);
+            gson.toJson(configuration, writer);
+            writer.close();
+            System.out.println("\nConfiguration saved successfully.");
+        } catch (IOException e) {
+            System.out.println("\nError saving configuration.");
+        }
     }
-    public void loadConfiguration() {
 
+    public Configuration loadConfiguration() {
+        Configuration configuration = null;
+        Gson gson = new Gson();
+        try {
+            FileReader reader = new FileReader(CONFIGURATION_FILE);
+            configuration = gson.fromJson(reader, Configuration.class);
+            reader.close();
+        } catch (FileNotFoundException e) {
+            configuration = new Configuration();
+            saveConfiguration(configuration);
+        } catch (IOException e) {
+            System.out.println("\nError loading configuration.");
+        }
+        if (configuration == null) {
+            configuration = new Configuration();
+        }
+        return configuration;
     }
 
     // Journey Files

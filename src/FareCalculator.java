@@ -2,23 +2,27 @@ import java.math.BigDecimal;
 import java.math.RoundingMode;
 
 public class FareCalculator {
+    private Configuration configuration;
 
     // Constructor
-    public FareCalculator() {}
+    public FareCalculator(Configuration configuration) {
+        this.configuration = configuration;
 
+    }
     // Calculate Base Fare
     // (In28Minutes, 2018)
     public BigDecimal calculateBaseFare(int fromZone, int toZone, CityRideDataset.TimeBand timeBand) {
 
-        return CityRideDataset.getBaseFare(fromZone, toZone, timeBand);
-
+        String key = CityRideDataset.key(fromZone, toZone, timeBand);
+        BigDecimal fare = configuration.getBaseFares().get(key);
+        return fare;
     }
 
     // Apply Discount
     // (In28Minutes, 2018)
     public BigDecimal applyDiscount(BigDecimal baseFare, CityRideDataset.PassengerType passengerType) {
 
-        BigDecimal discountRate = CityRideDataset.DISCOUNT_RATE.get(passengerType);
+        BigDecimal discountRate = configuration.getDiscountRates().get(passengerType);
         BigDecimal discount = baseFare.multiply(discountRate);
         BigDecimal finalFare = baseFare.subtract(discount);
 
@@ -30,7 +34,7 @@ public class FareCalculator {
     public BigDecimal applyDailyCap(BigDecimal totalSpentToday, BigDecimal currentFare,
             CityRideDataset.PassengerType passengerType) {
 
-        BigDecimal cap = CityRideDataset.DAILY_CAP.get(passengerType);
+        BigDecimal cap = configuration.getDailyCaps().get(passengerType);
 
         // (Oracle, 2026)
         BigDecimal newTotal = totalSpentToday.add(currentFare);

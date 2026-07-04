@@ -13,12 +13,12 @@ public class JourneyManager{
     private Rider currentRider;
 
     // Constructor
-    public JourneyManager(Scanner input) {
+    public JourneyManager(Scanner input, Configuration configuration) {
 
         journeys = new ArrayList<>();
         validation = new Validation();
         this.input = input;
-        calculator = new FareCalculator();
+        calculator = new FareCalculator(configuration);
         summaryManager = new SummaryManager();
         nextJourneyID = 1;
         currentRider = null;
