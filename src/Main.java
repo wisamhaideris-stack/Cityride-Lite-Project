@@ -298,9 +298,8 @@ public class Main {
         System.out.println("\nCurrent Discount: " + configuration.getDiscountRates().get(passengerType));
 
         System.out.print("Enter New Discount: ");
-        double newDiscount = input.nextDouble();
-        input.nextLine();
-        configuration.getDiscountRates().put(passengerType, BigDecimal.valueOf(newDiscount));
+        BigDecimal newDiscount = validation.getValidDecimal(input, "Enter New Discount: ");
+        configuration.getDiscountRates().put(passengerType, newDiscount);
         System.out.println("\nDiscount Updated Successfully.");
     }
 
