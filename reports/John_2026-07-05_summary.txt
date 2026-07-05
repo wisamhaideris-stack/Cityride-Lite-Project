@@ -1,0 +1,13 @@
+CityRide End-of-Day Summary
+Rider: John
+Total Journeys: 1
+Total Cost: £2.50
+Average Cost: £2.50
+Most Expensive Journey ID: 1
+Most Expensive Fare: £2.50
+Caps Applied Count: 0
+Savings vs Base: £0.70
+Peak Journeys: 1
+Off-Peak Journeys: 0
+Zone Pair Counts:
+  1-2: 1

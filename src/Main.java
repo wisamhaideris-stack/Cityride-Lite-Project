@@ -1,3 +1,4 @@
+import java.io.File;
 import java.math.BigDecimal;
 import java.util.Scanner;
 import java.util.ArrayList;
@@ -60,6 +61,15 @@ public class Main {
                         manager.resetJourneys();
                         break;
                     case 6:
+                        importJourneys();
+                        break;
+                    case 7:
+                        exportJourneys();
+                        break;
+                    case 8:
+                        exportReports();
+                        break;
+                    case 9:
                         manager.setCurrentRider(null);
                         riderLoggedIn = false;
                         System.out.println("\nLogged out successfully.");
@@ -87,7 +97,10 @@ public class Main {
         System.out.println("3. Daily summary");
         System.out.println("4. Remove Journey");
         System.out.println("5. Reset Day");
-        System.out.println("6. Logout");
+        System.out.println("6. Import Journeys CSV");
+        System.out.println("7. Export Journeys CSV");
+        System.out.println("8. Export Reports (CSV/TXT)");
+        System.out.println("9. Logout");
 
     }
     public static int getUserChoice() {
@@ -299,6 +312,10 @@ public class Main {
 
         System.out.print("Enter New Discount: ");
         BigDecimal newDiscount = validation.getValidDecimal(input, "Enter New Discount: ");
+        if (!validation.validateDiscount(newDiscount)) {
+            System.out.println("Invalid discount. Must be between 0 and 1.");
+            return;
+        }
         configuration.getDiscountRates().put(passengerType, newDiscount);
         System.out.println("\nDiscount Updated Successfully.");
     }
@@ -342,13 +359,12 @@ public class Main {
         System.out.println("\nCurrent Daily Cap: £" + configuration.getDailyCaps().get(passengerType));
         System.out.print("Enter New Daily Cap: ");
 
-        double newCap = input.nextDouble();
-        input.nextLine();
-
-        configuration.getDailyCaps().put(
-                passengerType,
-                BigDecimal.valueOf(newCap)
-        );
+        BigDecimal newCap = validation.getValidDecimal(input, "Enter New Daily Cap (>= 0): ");
+        if (!validation.validateMoney(newCap)) {
+            System.out.println("Invalid cap.");
+            return;
+        }
+        configuration.getDailyCaps().put(passengerType, newCap);
 
         System.out.println("\nDaily Cap Updated Successfully.");
 
@@ -379,9 +395,41 @@ public class Main {
         System.out.println("\nCurrent Base Fare: £" + configuration.getBaseFares().get(key));
 
         System.out.print("Enter New Base Fare: ");
-        double newFare = input.nextDouble();
-        input.nextLine();
-        configuration.getBaseFares().put(key, BigDecimal.valueOf(newFare));
+        BigDecimal newFare = validation.getValidDecimal(input, "Enter New Base Fare (>= 0): ");
+        if (!validation.validateMoney(newFare)) {
+            System.out.println("Invalid fare."); return;
+        }
+        configuration.getBaseFares().put(key, newFare);
         System.out.println("\nBase Fare Updated Successfully.");
+    }
+    public static void importJourneys() {
+        fm.importJourneysCSV(manager);
+    }
+
+    public static void exportJourneys() {
+        fm.exportJourneysCSV(manager.getJourneys());
+    }
+
+    public static void exportReports() {
+        Rider rider = manager.getCurrentRider();
+        if (rider == null) {
+            System.out.println("\nNo active rider.");
+            return;
+        }
+
+        String safeName = rider.getName().replaceAll("[^a-zA-Z0-9-_]", "_");
+        String date = java.time.LocalDate.now().toString();
+
+        File reportsDir = new File("reports");
+        if (!reportsDir.exists()) reportsDir.mkdirs();
+
+        String txtPath = "reports/" + safeName + "_" + date + "_summary.txt";
+        String csvPath = "reports/" + safeName + "_" + date + "_summary.csv";
+
+        String txtContent = manager.getSummaryManager().buildSummaryText(manager.getJourneys(), rider);
+        String csvContent = manager.getSummaryManager().buildSummaryCsv(manager.getJourneys(), rider);
+
+        fm.exportSummaryTXT(txtPath, txtContent);
+        fm.exportSummaryCSV(csvPath, csvContent);
     }
 }

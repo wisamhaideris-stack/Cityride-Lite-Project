@@ -1,0 +1,2 @@
+Journey ID,Date,Time,From Zone,To Zone,Passenger Type,Time Band,Base Fare,Discount Applied,Final Fare,Zones Crossed,Cap Applied
+1,11/12/1222,11:11,1,2,ADULT,PEAK,3.20,0.70,2.50,2,false

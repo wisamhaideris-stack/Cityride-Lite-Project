@@ -35,6 +35,7 @@ public class JourneyManager{
         boolean valid = true;
         System.out.println("\nAdd Journey");
         String date = validation.getValidDate(input);
+        String time = validation.getValidClockTime(input);
 
         int fromZone = 0;
         int toZone = 0;
@@ -55,50 +56,10 @@ public class JourneyManager{
 
         }
 
-        CityRideDataset.PassengerType passengerType = null;
-        CityRideDataset.TimeBand timeBand = null;
+        CityRideDataset.PassengerType passengerType = validation.getValidPassengerType(input);
+        CityRideDataset.TimeBand timeBand = validation.getValidTimeBand(input);
 
-        if (valid) {
-            passengerType = validation.getValidPassengerType(input);
-        }
-
-        if (valid) {
-            timeBand = validation.getValidTimeBand(input);
-        }
-
-        if (valid) {
-            // Fare
-            BigDecimal baseFare = calculator.calculateBaseFare(fromZone, toZone, timeBand);
-            BigDecimal finalFare = calculator.applyDiscount(baseFare, passengerType);
-
-            // Daily cap
-            BigDecimal totalSpentToday = BigDecimal.ZERO;
-
-            for (Journey existingJourney : journeys) {
-
-                if (existingJourney.getDate().equals(date) && existingJourney.getPassengerType() == passengerType) {
-                    // (In28Minutes, 2018)
-                    totalSpentToday = totalSpentToday.add(existingJourney.getFinalFare());
-                }
-            }
-
-            finalFare = calculator.applyDailyCap(totalSpentToday, finalFare, passengerType);
-
-            BigDecimal discountApplied = baseFare.subtract(finalFare);
-
-            int zonesCrossed = Math.abs(fromZone - toZone) + 1;
-
-            // Create Journey
-            Journey journey = new Journey(nextJourneyID, date, fromZone, toZone, passengerType, timeBand, baseFare, finalFare, discountApplied, zonesCrossed);
-
-            // Store Journey
-
-            // (Oracle, 2026)
-            journeys.add(journey);
-            nextJourneyID++;
-            System.out.println("\nJourney Added Successfully");
-
-        }
+        addJourneyFromData(date, time, fromZone, toZone, passengerType, timeBand);
 
     }
 
@@ -451,6 +412,9 @@ public class JourneyManager{
         journeys.add(journey);
         nextJourneyID++;
         System.out.println("\nJourney Added Successfully");
+    }
+    public SummaryManager getSummaryManager() {
+        return summaryManager;
     }
 
 }
