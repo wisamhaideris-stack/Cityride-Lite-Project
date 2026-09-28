@@ -994,7 +994,3 @@ System.out.println("Off Peak Journeys: " + offPeak);
 - Obregon, A. (2024, September 1). Java's Objects.equals() Method Explained, *Medium*. [online] Retrieved from: https://medium.com/@AlexanderObregon/javas-objects-equals-method-explained-3a84c963edfa [Accessed 23 May 2026].
 
 - Vertex42. (n.d.). *Simple Gantt Chart*. Retrieved from: [Simple Gantt Chart by Vertex42](https://www.vertex42.com/ExcelTemplates/simple-gantt-chart.html) [Accessed 02 May 2026].
-
-# <mark>Appendices</mark>
-
-- Obregon, A. (2024, September 1). Java's Objects.equals() Method Explained, *Medium*. [online] Retrieved from: https://medium.com/@AlexanderObregon/javas-objects-equals-method-explained-3a84c963edfa [Accessed 23 May 2026].
