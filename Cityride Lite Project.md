@@ -977,6 +977,17 @@ System.out.println("Off Peak Journeys: " + offPeak);
 
 }
 
+------------------------------------------------------------------------------------------------------------------------------
+
+### Updated Gantt Chart
+
+------------------------------------------------------------------------------------------------------------------------------
+
+### ![](Milestone%204%20gantt%20chart1.png)
+
+![](Milestone%204%20gantt%20chart%202.png)
+
+
 # References
 
 - Oracle. (2014). *List (Java Platform SE 8)*. Retrieved from: [List (Java Platform SE 8 )](https://docs.oracle.com/javase/8/docs/api/java/util/List.html) [Accessed 31 May 2026].
